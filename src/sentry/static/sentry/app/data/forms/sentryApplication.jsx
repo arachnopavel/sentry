@@ -11,7 +11,7 @@ const forms = [
         label: 'Internal',
         type: 'boolean',
         help:
-          'If enabled, your integration will automatically be installed and for use within your organization only.',
+          'If enabled, your integration will automatically be installed for use within only your organization.',
       },
       {
         name: 'name',
