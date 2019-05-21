@@ -26,10 +26,11 @@ class Table extends React.Component {
   }
 
   fetchData = async () => {
-    const {api, organization} = this.props;
+    const {api, organization, view} = this.props;
     this.setState({isLoading: true, hasError: false});
+
     try {
-      const events = await fetchOrganizationEvents(api, organization.slug);
+      const events = await fetchOrganizationEvents(api, organization.slug, view);
       this.setState({
         events,
         isLoading: false,
@@ -47,8 +48,8 @@ class Table extends React.Component {
       return <LoadingIndicator />;
     }
 
-    return events.map(event => (
-      <PanelItem key={event.id} className={getGridStyle(fields.length)}>
+    return events.map((event, idx) => (
+      <PanelItem key={idx} className={getGridStyle(fields.length)}>
         {fields.map(field => (
           <div key={field}>{event[field]}</div>
         ))}
