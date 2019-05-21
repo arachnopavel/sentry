@@ -183,6 +183,7 @@ class Activity extends React.Component {
                           <Note
                             showTime
                             item={activity}
+                            text={activity.comment}
                             id={`note-${activity.id}`}
                             author={{
                               name: authorName,
