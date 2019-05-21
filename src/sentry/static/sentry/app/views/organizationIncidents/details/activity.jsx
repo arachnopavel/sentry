@@ -177,7 +177,7 @@ class Activity extends React.Component {
                   activitiesForDate.map(activity => {
                     const authorName = activity.user ? activity.user.name : 'Sentry';
 
-                    if (activity.type === 'note') {
+                    if (activity.type === 3) {
                       return (
                         <ErrorBoundary mini key={`note-${activity.id}`}>
                           <Note
@@ -244,7 +244,7 @@ class ActivityContainer extends React.Component {
       const activities = await fetchIncidentActivities(api, orgId, incidentId);
       this.setState({activities, loading: false});
     } catch (err) {
-      this.setState({loading: false, error: err});
+      this.setState({loading: false, error: !!err});
     }
   }
 
